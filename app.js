@@ -47,6 +47,7 @@ function renderSearchResult(card) {
     img.src = card.images.small;
     img.alt = card.name;
     img.loading = 'lazy';
+    img.onclick = () => openModal(card.images.large);
     
     const info = document.createElement('div');
     info.className = 'card-info';
@@ -268,5 +269,35 @@ generateBtn.addEventListener('click', async () => {
     } finally {
         generateBtn.disabled = false;
         genLoading.classList.add('hidden');
+    }
+});
+
+// Lógica del Modal
+const imageModal = document.getElementById('image-modal');
+const modalImage = document.getElementById('modal-image');
+const closeModalBtn = document.getElementById('close-modal');
+
+function openModal(imgSrc) {
+    modalImage.src = imgSrc;
+    imageModal.classList.remove('hidden');
+    // Pequeño timeout para asegurar que la clase se aplica con transición
+    setTimeout(() => {
+        imageModal.classList.add('show');
+    }, 10);
+}
+
+function closeModal() {
+    imageModal.classList.remove('show');
+    // Esperar a que la transición termine para ocultar
+    setTimeout(() => {
+        imageModal.classList.add('hidden');
+        modalImage.src = '';
+    }, 300);
+}
+
+closeModalBtn.addEventListener('click', closeModal);
+imageModal.addEventListener('click', (e) => {
+    if (e.target === imageModal) {
+        closeModal();
     }
 });

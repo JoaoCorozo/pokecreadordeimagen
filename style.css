@@ -103,7 +103,7 @@ h2 {
         min-height: 0; /* Clave para el scroll en flexbox interno */
     }
     .search-panel {
-        flex: 1.3;
+        flex: 2; /* Ampliamos para que quepan fácilmente 4 cartas */
     }
     .cart-panel {
         flex: 1;
@@ -203,6 +203,12 @@ button:disabled {
     width: 100%;
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.card-item img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .card-info {
@@ -335,3 +341,54 @@ button:disabled {
 ::-webkit-scrollbar-track { background: var(--poke-darker); }
 ::-webkit-scrollbar-thumb { background: var(--poke-gray); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* Modal Image Viewer */
+.image-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.image-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.image-modal .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(238, 21, 21, 0.6);
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.image-modal.show .modal-content {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    z-index: 10000;
+}
+
+.close-modal:hover {
+    color: var(--poke-yellow);
+}

@@ -47,6 +47,12 @@
 
     <div id="toast" class="toast hidden"></div>
 
+    <!-- Modal para ver imagen a pantalla completa -->
+    <div id="image-modal" class="image-modal hidden">
+        <span class="close-modal" id="close-modal">&times;</span>
+        <img id="modal-image" class="modal-content" src="" alt="Carta en pantalla completa">
+    </div>
+
     <script src="app.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
