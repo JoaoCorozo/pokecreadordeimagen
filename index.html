@@ -20,14 +20,19 @@
     <main class="app-container">
         <!-- Panel Izquierdo: Buscador -->
         <section class="panel search-panel">
-            <h2><span class="icon">🔍</span> Buscar Cartas</h2>
-            <form id="search-form" class="search-bar">
-                <input type="text" id="search-input" placeholder="Ej: Charizard, Lugia..." required>
-                <button type="submit" id="search-btn">Buscar</button>
-            </form>
-            <div id="search-loading" class="loading-indicator hidden">Buscando...</div>
-            <div id="search-results" class="results-grid">
-                <!-- Resultados dinámicos -->
+            <div class="panel-header">
+                <h2><span class="icon">🔍</span> Buscar Cartas</h2>
+                <button id="toggle-search-btn" class="toggle-btn" aria-label="Colapsar panel">▲</button>
+            </div>
+            <div id="search-content">
+                <form id="search-form" class="search-bar">
+                    <input type="text" id="search-input" placeholder="Ej: Charizard, Lugia..." required>
+                    <button type="submit" id="search-btn">Buscar</button>
+                </form>
+                <div id="search-loading" class="loading-indicator hidden">Buscando...</div>
+                <div id="search-results" class="results-grid">
+                    <!-- Resultados dinámicos -->
+                </div>
             </div>
         </section>
 

@@ -87,36 +87,71 @@ h2 {
 
 @media (max-width: 768px) {
     html, body {
-        position: fixed; /* Ancla la página y evita el scroll/rebote nativo de Safari iOS */
-        top: 0; left: 0; right: 0; bottom: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
+        position: relative;
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
     .app-container {
-        flex-direction: column;
-        min-height: 0; /* Permite a los hijos flex encogerse */
+        display: block; /* Quitar flex para scroll natural */
     }
     .panel {
-        margin: 5px;
-        padding: 10px;
-        min-height: 0; /* Clave para el scroll en flexbox interno */
+        display: block;
+        margin: 10px;
+        padding: 15px;
+        min-height: auto;
     }
-    .search-panel {
-        flex: 2; /* Ampliamos para que quepan fácilmente 4 cartas */
+    .results-grid {
+        display: grid;
+        overflow-y: visible; /* Eliminar scroll interno */
     }
-    .cart-panel {
-        flex: 1;
-    }
-    .results-grid, .cart-list {
-        -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
-        overscroll-behavior: contain; /* Evita que el scroll rebote en el padre */
-    }
-    h2 {
-        font-size: 1.1rem;
-        margin-bottom: 5px;
+    .cart-list {
+        display: flex;
+        overflow-y: visible; /* Eliminar scroll interno */
     }
 }
+
+/* Estilos para colapsar panel */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--poke-gray);
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.panel-header h2 {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: var(--poke-yellow);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px 15px;
+    transition: transform 0.3s;
+}
+
+.toggle-btn:hover {
+    color: #ffd000;
+    background-color: transparent;
+    transform: scale(1.1);
+}
+
+.toggle-btn:active {
+    transform: scale(0.9);
+}
+
+.collapsed {
+    display: none !important;
+}
+
 
 .panel {
     flex: 1;

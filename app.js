@@ -9,12 +9,21 @@ const generateBtn = document.getElementById('generate-btn');
 const genLoading = document.getElementById('gen-loading');
 const toast = document.getElementById('toast');
 
+const toggleSearchBtn = document.getElementById('toggle-search-btn');
+const searchContent = document.getElementById('search-content');
+
 let cart = [];
 
 searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const query = searchInput.value.trim();
     if (!query) return;
+
+    // Auto-expandir el panel si estaba colapsado
+    if (searchContent && searchContent.classList.contains('collapsed')) {
+        searchContent.classList.remove('collapsed');
+        if (toggleSearchBtn) toggleSearchBtn.textContent = '▲';
+    }
 
     searchBtn.disabled = true;
     searchLoading.classList.remove('hidden');
@@ -301,3 +310,15 @@ imageModal.addEventListener('click', (e) => {
         closeModal();
     }
 });
+
+// Lógica de Colapso del Buscador
+if (toggleSearchBtn && searchContent) {
+    toggleSearchBtn.addEventListener('click', () => {
+        searchContent.classList.toggle('collapsed');
+        if (searchContent.classList.contains('collapsed')) {
+            toggleSearchBtn.textContent = '▼';
+        } else {
+            toggleSearchBtn.textContent = '▲';
+        }
+    });
+}
