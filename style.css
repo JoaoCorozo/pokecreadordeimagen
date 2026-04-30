@@ -110,6 +110,15 @@ h2 {
         display: flex;
         overflow-y: visible; /* Eliminar scroll interno */
     }
+    .search-bar {
+        flex-wrap: wrap;
+    }
+    .search-bar input[type="text"] {
+        flex: 1 1 100%;
+    }
+    .search-bar .page-size-select, .search-bar button {
+        flex: 1;
+    }
 }
 
 /* Estilos para colapsar panel */
