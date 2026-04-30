@@ -170,8 +170,7 @@ h2 {
     margin-bottom: 15px;
 }
 
-input[type="text"] {
-    flex: 1;
+input[type="text"], .page-size-select {
     padding: 12px;
     border-radius: 5px;
     border: 2px solid var(--poke-gray);
@@ -180,9 +179,15 @@ input[type="text"] {
     font-family: 'Nunito', sans-serif;
     font-size: 1rem;
 }
-input[type="text"]:focus {
+input[type="text"] {
+    flex: 1;
+}
+input[type="text"]:focus, .page-size-select:focus {
     outline: none;
     border-color: var(--poke-blue);
+}
+.page-size-select {
+    cursor: pointer;
 }
 
 button {

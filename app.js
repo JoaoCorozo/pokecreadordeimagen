@@ -30,8 +30,9 @@ searchForm.addEventListener('submit', async (e) => {
     searchResults.innerHTML = '';
 
     try {
+        const pageSize = document.getElementById('page-size') ? document.getElementById('page-size').value : '15';
         const formattedQuery = query.split(' ').map(word => `name:*${word}*`).join(' ');
-        const res = await fetch(`https://api.pokemontcg.io/v2/cards?q=${formattedQuery}&pageSize=15`);
+        const res = await fetch(`https://api.pokemontcg.io/v2/cards?q=${formattedQuery}&pageSize=${pageSize}&orderBy=-set.releaseDate`);
         if (!res.ok) throw new Error('Error en red');
         const data = await res.json();
         

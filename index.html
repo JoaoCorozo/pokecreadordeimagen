@@ -27,6 +27,12 @@
             <div id="search-content">
                 <form id="search-form" class="search-bar">
                     <input type="text" id="search-input" placeholder="Ej: Charizard, Lugia..." required>
+                    <select id="page-size" class="page-size-select" title="Cantidad de resultados">
+                        <option value="15">15 res</option>
+                        <option value="50">50 res</option>
+                        <option value="100">100 res</option>
+                        <option value="250">Max (250)</option>
+                    </select>
                     <button type="submit" id="search-btn">Buscar</button>
                 </form>
                 <div id="search-loading" class="loading-indicator hidden">Buscando...</div>
