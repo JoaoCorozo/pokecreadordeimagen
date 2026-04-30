@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creador de Listas Pokémon TCG</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#EE1515">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo-container">
+            <div class="pokeball-icon"></div>
+            <h1>PokéList Creator</h1>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <!-- Panel Izquierdo: Buscador -->
+        <section class="panel search-panel">
+            <h2><span class="icon">🔍</span> Buscar Cartas</h2>
+            <form id="search-form" class="search-bar">
+                <input type="text" id="search-input" placeholder="Ej: Charizard, Lugia..." required>
+                <button type="submit" id="search-btn">Buscar</button>
+            </form>
+            <div id="search-loading" class="loading-indicator hidden">Buscando...</div>
+            <div id="search-results" class="results-grid">
+                <!-- Resultados dinámicos -->
+            </div>
+        </section>
+
+        <!-- Panel Derecho: Carrito -->
+        <section class="panel cart-panel">
+            <h2><span class="icon">🎒</span> Tu Lista</h2>
+            <div id="cart-items" class="cart-list">
+                <div class="empty-cart">Tu lista está vacía. Busca cartas y añádelas aquí.</div>
+            </div>
+            
+            <div class="cart-footer">
+                <div id="gen-loading" class="loading-indicator hidden">Descargando HD y Generando...</div>
+                <button id="generate-btn" class="generate-btn" disabled>Generar Imagen Final</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(err => console.log('SW req falló', err));
+            });
+        }
+    </script>
+</body>
+</html>
